@@ -1,17 +1,126 @@
-<ion-view view-title="Dashboard">
-  <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      For help sending push notifications, join the <a href="https://apps.ionic.io/signup" target="_blank">Ionic Platform</a> and check out <a href="http://docs.ionic.io/docs/push-overview" target="_blank">Ionic Push</a>. We also have other services available.
-    </p>
+<ion-view view-title="Money Tally Calc">
+  <ion-content class="" overflow-scroll="true">
+     <md-content layout-padding="">
+    <form name="userForm">
+     
+
+      <div layout="row">
+        <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Name</label>
+          <input required="" name="name" ng-model="user.name">
+          <div ng-messages="userForm.name.$error" ng-if="!showHints">
+            <div ng-message="required">Name is required.</div>
+          </div>
+        </md-input-container>
+        </div>
+        <div flex="5" hide-xs="" hide-sm="">
+          <!-- Spacer //-->
+        </div>
+          <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Enter Amount</label>
+           <input required="" name="money" ng-model="user.money" type="number" step="0.01" min="0" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+          <div ng-messages="userForm.money.$error" ng-if="!showHints">
+             <div ng-message="required">Amount is required.</div>
+             <div ng-message="pattern">Amount should be postive and allow two decimal values </div>
+          </div>
+        </md-input-container>
+         </div>
+      </div>
+      <div layout="row">
+        <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Name</label>
+          <input required="" name="name" ng-model="user.name1">
+          <div ng-messages="userForm.name.$error" ng-if="!showHints">
+            <div ng-message="required">Name is required.</div>
+          </div>
+        </md-input-container>
+        </div>
+        <div flex="5" hide-xs="" hide-sm="">
+          <!-- Spacer //-->
+        </div>
+          <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Enter Amount</label>
+           <input required="" name="money" ng-model="user.money1" type="number" step="0.01" min="0" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+          <div ng-messages="userForm.money.$error" ng-if="!showHints">
+             <div ng-message="required">Amount is required.</div>
+             <div ng-message="pattern">Amount should be postive and allow two decimal values </div>
+          </div>
+        </md-input-container>
+         </div>
+      </div>
+      <div layout="row">
+        <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Name</label>
+          <input required="" name="name" ng-model="user.name2">
+          <div ng-messages="userForm.name.$error" ng-if="!showHints">
+            <div ng-message="required">Name is required.</div>
+          </div>
+        </md-input-container>
+        </div>
+        <div flex="5" hide-xs="" hide-sm="">
+          <!-- Spacer //-->
+        </div>
+          <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Enter Amount</label>
+           <input required="" name="money" ng-model="user.money2" type="number" step="0.01" min="0" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+          <div ng-messages="userForm.money.$error" ng-if="!showHints">
+             <div ng-message="required">Amount is required.</div>
+             <div ng-message="pattern">Amount should be postive and allow two decimal values </div>
+          </div>
+        </md-input-container>
+         </div>
+      </div>
+      <div layout="row">
+        <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Name</label>
+          <input required="" name="name" ng-model="user.name3">
+          <div ng-messages="userForm.name.$error" ng-if="!showHints">
+            <div ng-message="required">Name is required.</div>
+          </div>
+        </md-input-container>
+        </div>
+        <div flex="5" hide-xs="" hide-sm="">
+          <!-- Spacer //-->
+        </div>
+          <div flex>
+        <md-input-container class="md-block" flex-gt-sm="">
+          <label>Enter Amount</label>
+           <input required="" name="money" ng-model="user.money3" type="number" step="0.01" min="0" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/">
+          <div ng-messages="userForm.money.$error" ng-if="!showHints">
+             <div ng-message="required">Amount is required.</div>
+             <div ng-message="pattern">Amount should be postive and allow two decimal values </div>
+          </div>
+        </md-input-container>
+         </div>
+      </div>
+       <!--md-button class="md-raised md-primary">Add User</md-button-->
+       <md-button ng-disabled="userForm.$invalid" class="md-raised" ng-click="calc(user);">Submit</md-button>
+
+    </form>
+   <ion-list>
+    <ion-item ng-repeat="list in lists">
+        <h1>{{list.name}}</h1>
+           <ion-list>
+               <ion-item ng-repeat="result in list.result">
+                <span>{{result.give}}</span> --- <span>{{result.money}}</span>
+               </ion-item>
+            </ion-list>
+    </ion-item>
+    </ion-list>
+  </md-content>
   </ion-content>
+
 </ion-view>
+
+
+<!--
+Copyright 2016 Google Inc. All Rights Reserved. 
+Use of this source code is governed by an MIT-style license that can be foundin the LICENSE file at http://material.angularjs.org/HEAD/license.
+-->
