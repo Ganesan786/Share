@@ -77,6 +77,15 @@ angular.module('starter', ['ngMaterial', 'ngMessages','ionic', 'starter.controll
         controller: 'DashCtrl'
       }
     }
+  })
+  .state('tab.addForm', {
+    url: '/addForm',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/tab-addForm.html',
+        controller: 'addForm'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback
