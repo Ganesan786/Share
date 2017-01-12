@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope,$ionicTabsDelegate) {
-
+.controller('DashCtrl', function($scope,$ionicTabsDelegate,UsersInfo) {
+  $scope.users = UsersInfo.all();
   $scope.calc = function(obj){
     var obj = [
   {name:obj.name,rs:obj.money,result:[]},
@@ -69,8 +69,9 @@ $scope.lists = finalVal;
         }
     }
 })
-.controller('addForm',function($scope,$ionicTabsDelegate){
+.controller('addForm',function($scope,$ionicTabsDelegate,$state,UsersInfo){
   //$ionicTabsDelegate.showBar(false);
+    $scope.user = {};
     $scope.$on("$ionicView.beforeEnter", function () {
         $ionicTabsDelegate.showBar(false);
       });
@@ -83,12 +84,19 @@ $scope.lists = finalVal;
             $ionicTabsDelegate.select(selected + 1);
         }
     }
-
     $scope.goBack = function () {
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1 && selected != 0) {
             $ionicTabsDelegate.select(selected - 1);
         }
+    }
+
+    $scope.formSubmission = function() {
+      var obj = {
+       "name":$scope.user.name,"rs":$scope.user.money,"description":$scope.user.description,"date":$scope.user.myDate,"result":[]
+      };
+      UsersInfo.all().push(obj);
+      $state.go("tab.dash");
     }
 })
 
@@ -129,10 +137,8 @@ $scope.lists = finalVal;
     }
 })
 
-.controller('AccountCtrl', function($scope,$ionicTabsDelegate) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('AccountCtrl', function($scope,$ionicTabsDelegate,UsersInfo) {
+ $scope.users = UsersInfo.all();
    $scope.goForward = function () {
         var selected = $ionicTabsDelegate.selectedIndex();
         if (selected != -1) {
