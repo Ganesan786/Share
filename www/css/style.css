@@ -51,3 +51,22 @@
     float: right;
     display: block;
 }
+.mR-10 {
+	margin-right: 10px;
+}
+.lbl-h4 {
+	color: rgba(0,0,0,0.38);
+	font-size: 14px;
+}
+.tick-show-hide {
+    -webkit-transition:all linear 0.3s  !important;
+    transition:all linear 0.3s !important;
+}
+
+.tick-show-hide.ng-hide {
+    opacity: 0;
+}
+
+.tick-show-hide.ng-show {
+    opacity: 1;
+}
