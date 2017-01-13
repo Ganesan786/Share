@@ -69,7 +69,7 @@ $scope.lists = finalVal;
         }
     }
 })
-.controller('addForm',function($scope,$ionicTabsDelegate,$state,UsersInfo){
+.controller('addForm',function($scope,$ionicTabsDelegate,$state,UsersInfo,$filter){
   //$ionicTabsDelegate.showBar(false);
     $scope.user = {};
     $scope.$on("$ionicView.beforeEnter", function () {
@@ -90,10 +90,12 @@ $scope.lists = finalVal;
             $ionicTabsDelegate.select(selected - 1);
         }
     }
-
+    $scope.$watch('user.myDate', function (newValue) {
+      $scope.date = $filter('date')(newValue, 'dd-MM-yyyy'); 
+    });
     $scope.formSubmission = function() {
       var obj = {
-       "name":$scope.user.name,"rs":$scope.user.money,"description":$scope.user.description,"date":$scope.user.myDate,"result":[]
+       "name":$scope.user.name,"rs":$scope.user.money,"description":$scope.user.description,"date":$scope.date,"result":[]
       };
       UsersInfo.all().push(obj);
       $state.go("tab.dash");
